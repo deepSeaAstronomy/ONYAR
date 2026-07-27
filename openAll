@@ -1,0 +1,28 @@
+#!/bin/bash
+
+xterm -T "traceDefH" -geometry 159x76+0+0 -e vim traceDef.h &
+xterm -T "traceDefCPP" -geometry 159x76+1000+0 -e vim traceDef.cpp &
+
+xterm -T "primDefH" -geometry 159x76+0+0 -e vim primDef.h &
+xterm -T "primDefCPP" -geometry 159x76+1000+0 -e vim primDef.cpp &
+
+xterm -T "common" -geometry 159x76+0+0 -e vim common.h &
+xterm -T "main" -geometry 159x76+1000+0 -e vim main.cpp &
+
+xterm -T "writeDefH" -geometry 159x76+0+0 -e vim writeDef.h &
+xterm -T "writeDefCPP" -geometry 159x76+1000+0 -e vim writeDef.cpp &
+
+sleep 0.7
+
+wmctrl -i -r $(wmctrl -l | grep traceDefH | cut -c 1-10) -t 2
+wmctrl -i -r $(wmctrl -l | grep traceDefCPP | cut -c 1-10) -t 2
+
+wmctrl -i -r $(wmctrl -l | grep primDefH | cut -c 1-10) -t 3
+wmctrl -i -r $(wmctrl -l | grep primDefCPP | cut -c 1-10) -t 3
+
+wmctrl -i -r $(wmctrl -l | grep main | cut -c 1-10) -t 4
+wmctrl -i -r $(wmctrl -l | grep common | cut -c 1-10) -t 4
+
+wmctrl -i -r $(wmctrl -l | grep writeDefH | cut -c 1-10) -t 5
+wmctrl -i -r $(wmctrl -l | grep writeDefCPP | cut -c 1-10) -t 5
+
